@@ -1,7 +1,8 @@
+import os
 import torch
 import argparse
 from diffusers import DiffusionPipeline, StableDiffusionPipeline, AutoencoderKL
-from diffusers import DPMSolverMultistepScheduler
+from diffusers import LCMScheduler
 from callbacks import make_callback
 
 def get_example_prompt():
@@ -15,25 +16,45 @@ def main(args):
     prompt, negative_prompt = get_example_prompt()
 
     # base model for the realistic style example
-    model_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
+    model_name = 'models/Realistic-LCM-LoRA'
+
+    if not os.path.exists(model_name):
+        # set base model
+        pipeline = DiffusionPipeline.from_pretrained(
+            'SG161222/Realistic_Vision_V5.1_noVAE',
+            custom_pipeline="./pipelines/sd1.5_0.26.3",
+            use_safetensors=True,
+            safety_checker=None,
+            requires_safety_checker=False
+        ).to("cuda")
+
+        # set vae
+        vae = AutoencoderKL.from_pretrained(
+            "stabilityai/sd-vae-ft-mse",
+        ).to("cuda")
+        pipeline.vae = vae
+
+        # set scheduler
+        pipeline.scheduler = LCMScheduler.from_config(pipeline.scheduler.config)
+
+        # It seems that there is a bug when composing multiple LoRAs after fusing.
+        # Therefore, we first save the models before proceeding with the composition.
+        pipeline.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
+        pipeline.fuse_lora()
+        pipeline.unload_lora_weights()
+        pipeline.save_pretrained("models/Realistic-LCM-LoRA")
 
     # set base model
     pipeline = DiffusionPipeline.from_pretrained(
         model_name,
         custom_pipeline="./pipelines/sd1.5_0.26.3",
-        use_safetensors=True
+        use_safetensors=True,
+        safety_checker=None,
+        requires_safety_checker=False
     ).to("cuda")
-
-    # set vae
-    vae = AutoencoderKL.from_pretrained(
-        "stabilityai/sd-vae-ft-mse",
-    ).to("cuda")
-    pipeline.vae = vae
 
     # set scheduler
-    schedule_config = dict(pipeline.scheduler.config)
-    schedule_config["algorithm_type"] = "dpmsolver++"
-    pipeline.scheduler = DPMSolverMultistepScheduler.from_config(schedule_config)
+    pipeline.scheduler = LCMScheduler.from_config(pipeline.scheduler.config)
 
     # initialize LoRAs
     # This example shows the composition of a character LoRA and a clothing LoRA
@@ -82,7 +103,7 @@ if __name__ == "__main__":
                         help='path to store all LoRAs', type=str)
     parser.add_argument('--lora_scale', default=0.8,
                         help='scale of each LoRA when generating images', type=float)
-    parser.add_argument('--switch_step', default=5,
+    parser.add_argument('--switch_step', default=2,
                         help='number of steps to switch LoRA during denoising, applicable only in the switch method', type=int)
 
     # Arguments for generating images
@@ -90,11 +111,11 @@ if __name__ == "__main__":
                         help='height of the generated images', type=int)
     parser.add_argument('--width', default=768,
                         help='width of the generated images', type=int)
-    parser.add_argument('--denoise_steps', default=50,
+    parser.add_argument('--denoise_steps', default=8,
                         help='number of the denoising steps', type=int)
-    parser.add_argument('--cfg_scale', default=7,
+    parser.add_argument('--cfg_scale', default=1.8,
                         help='scale for classifier-free guidance', type=float)
-    parser.add_argument('--seed', default=11,
+    parser.add_argument('--seed', default=42,
                         help='seed for generating images', type=int)
 
     args = parser.parse_args()
