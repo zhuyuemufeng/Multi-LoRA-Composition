@@ -149,7 +149,7 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
         negative_prompt=negative_prompt,
         # height=1024,
         # width=768,
-        num_inference_steps=8,
+        num_inference_steps=20,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
@@ -188,5 +188,5 @@ if __name__ == "__main__":
                  f'execution time: {lcm_time}', f'execution time: {hyper_time}',
                  f'execution time: {tcd_time}']
     name_1 = name.replace(".safetensors", "")
-    merge_images_with_text(images, titles, subtitles, f"file/{method}-{name_1}.jpg")
+    merge_images_with_text(images, titles, subtitles, f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{name_1}.jpg")
     print(f"{method}-{name_1} finished")
