@@ -127,8 +127,8 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
     ).images[0]
     end_time = time.time()
     pipeline.unload_lora_weights()
-    image.save(f"file/{speed_type}-{bath_fix}.jpg")
-    return f"file/{speed_type}-{bath_fix}.jpg", end_time - start_time
+    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg")
+    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg", end_time - start_time
 
 def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
     prompt, negative_prompt = get_example_prompt()
@@ -158,8 +158,8 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
     end_time = time.time()
     file_name = "lora" if lora_name != '' else "no_lora"
     pipeline.unload_lora_weights()
-    image.save(f"file/base-{file_name}-{bath_fix}.jpg")
-    return f"file/base-{file_name}-{bath_fix}.jpg", end_time - start_time
+    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{bath_fix}.jpg")
+    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{bath_fix}.jpg", end_time - start_time
 
 
 if __name__ == "__main__":
