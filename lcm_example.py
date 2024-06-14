@@ -32,8 +32,8 @@ def main(args):
     # initialize LoRAs
     # This example shows the composition of a character LoRA and a clothing LoRA
     pipeline.load_lora_weights(args.lora_path, weight_name="character_2.safetensors", adapter_name="character")
-    pipeline.load_lora_weights(args.lora_path, weight_name="clothing_2.safetensors", adapter_name="clothing")
-    cur_loras = ["character", "clothing"]
+    #pipeline.load_lora_weights(args.lora_path, weight_name="clothing_2.safetensors", adapter_name="clothing")
+    cur_loras = ["character"]
 
     # select the method for the composition
     if args.method == "merge":
