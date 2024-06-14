@@ -135,6 +135,7 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
         pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name="lora_style")
         cur_loras = ["lora_style"]
         pipeline.set_adapters(cur_loras)
+        print("base creat Load LoRA")
     start_time = time.time()
     image = pipeline(
         prompt=prompt,
