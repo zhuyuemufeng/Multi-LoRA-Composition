@@ -110,7 +110,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         negative_prompt=negative_prompt,
         # height=1024,
         # width=768,
-        num_inference_steps=8,
+        num_inference_steps=4,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
@@ -156,7 +156,7 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
 
 if __name__ == "__main__":
     path = "/kaggle/input/lora-model/lora/reality"
-    name = "clothing_1.safetensors"
+    name = "clothing_2.safetensors"
     method = "switch"   # merge switch composite
 
     lcm_file, lcm_time = speed_lora(path, method, "LCM", name)
