@@ -21,7 +21,7 @@ def scheduler(speed_type: str, pipeline):
     else:
         return TCDScheduler.from_config(pipeline.scheduler.config)
 
-def speed_type(speed_type: str, pipeline):
+def speed_choose(speed_type: str, pipeline):
     if speed_type == "LCM":
         pipeline.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
     elif speed_type == "Hyper-SD":
@@ -81,7 +81,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         # ).to("cuda")
         # pipeline.vae = vae
         pipeline.scheduler = scheduler(speed_type, pipeline)
-        scheduler(speed_type, pipeline)
+        speed_choose(speed_type, pipeline)
         pipeline.fuse_lora()
         pipeline.unload_lora_weights()
         pipeline.save_pretrained(model_name)
