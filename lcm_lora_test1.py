@@ -9,7 +9,7 @@ from callbacks import make_callback
 from PIL import Image, ImageDraw, ImageFont
 
 def get_example_prompt():
-    prompt = "RAW photo, subject, 8k uhd, dslr, high quality, Fujifilm XT3, half-length portrait from knees up, scarlett, short red hair, blue eyes, school uniform, white shirt, red tie, blue pleated microskirt"
+    prompt = "RAW photo, subject, 8k uhd, dslr, high quality, th3r0ck with no hair, muscular male, serious look on his face"
     negative_prompt = "extra heads, nsfw, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, text, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck"
     return prompt, negative_prompt
 
@@ -111,7 +111,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         negative_prompt=negative_prompt,
         # height=1024,
         # width=768,
-        num_inference_steps=8,
+        num_inference_steps=4,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
