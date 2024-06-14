@@ -111,7 +111,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         negative_prompt=negative_prompt,
         # height=1024,
         # width=768,
-        num_inference_steps=4,
+        num_inference_steps=8,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
