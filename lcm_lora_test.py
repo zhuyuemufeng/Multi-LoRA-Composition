@@ -76,11 +76,11 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
             requires_safety_checker=False
         ).to("cuda")
 
-        # set vae
-        # vae = AutoencoderKL.from_pretrained(
-        #     "stabilityai/sd-vae-ft-mse",
-        # ).to("cuda")
-        # pipeline.vae = vae
+        #set vae
+        vae = AutoencoderKL.from_pretrained(
+            "stabilityai/sd-vae-ft-mse",
+        ).to("cuda")
+        pipeline.vae = vae
         pipeline.scheduler = scheduler(speed_type, pipeline)
         speed_choose(speed_type, pipeline)
         pipeline.fuse_lora()
@@ -105,12 +105,15 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
 
     # select the method for the composition
     if method == "merge":
+        print("select the method is >>>>>>>>>> merge")
         pipeline.set_adapters(cur_loras)
         switch_callback = None
     elif method == "switch":
+        print("select the method is >>>>>>>>>> switch")
         pipeline.set_adapters([cur_loras[0]])
         switch_callback = make_callback(switch_step=2, loras=cur_loras)
     else:
+        print("select the method is >>>>>>>>>> composite")
         pipeline.set_adapters(cur_loras)
         switch_callback = None
     start_time = time.time()
