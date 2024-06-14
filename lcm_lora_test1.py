@@ -165,9 +165,9 @@ if __name__ == "__main__":
 
     tcd_file, tcd_time = speed_lora(path, method, "TCD", name)
 
-    base_file, base_time = base_lora(path, name)
+    base_lora_file, base_lora_time = base_lora(path, name)
 
-    base_lora_file, base_lora_time = base_lora("", "")
+    base_file, base_time = base_lora("", "")
 
     # 图片路径列表
     images = [base_file, base_lora_file, lcm_file, hyper_file, tcd_file]
