@@ -1,3 +1,4 @@
+import argparse
 import os
 import torch
 from diffusers import DiffusionPipeline, AutoencoderKL, DDIMScheduler, TCDScheduler
@@ -163,10 +164,22 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
 
 
 if __name__ == "__main__":
-    path = "/kaggle/input/lora-model/lora/reality"
-    name = "clothing_1.safetensors"
-    method = "switch"   # merge switch composite
+    parser = argparse.ArgumentParser(
+        description='Example code for multi-LoRA composition'
+    )
 
+    parser.add_argument('--method', default='switch',
+                        choices=['merge', 'switch', 'composite'],
+                        help='methods for combining LoRAs', type=str)
+    parser.add_argument('--lora', default='clothing_1.safetensors',
+                        help='lora name', type=str)
+    args = parser.parse_args()
+
+
+    path = "/kaggle/input/lora-model/lora/reality"
+    name = parser.lora
+    method = parser.method   # merge switch composite
+    print(f"lora_name: {name}, method: {method}")
     lcm_file, lcm_time = speed_lora(path, method, "LCM", name)
 
     hyper_file, hyper_time = speed_lora(path, method, "Hyper-SD", name)
