@@ -98,7 +98,7 @@ if __name__ == "__main__":
                         help='methods for combining LoRAs', type=str)
     parser.add_argument('--save_path', default='example.png',
                         help='path to save the generated image', type=str)
-    parser.add_argument('--lora_path', default='models/lora/reality',
+    parser.add_argument('--lora_path', default='/kaggle/input/lora-model/lora/reality',
                         help='path to store all LoRAs', type=str)
     parser.add_argument('--lora_scale', default=0.8,
                         help='scale of each LoRA when generating images', type=float)
