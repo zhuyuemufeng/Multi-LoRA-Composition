@@ -122,7 +122,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         negative_prompt=negative_prompt,
         # height=1024,
         # width=768,
-        num_inference_steps=4,
+        num_inference_steps=8,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
@@ -130,7 +130,6 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         lora_composite=True if method == "composite" else False
     ).images[0]
     end_time = time.time()
-    pipeline.unload_lora_weights()
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg")
     return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg", end_time - start_time
 
