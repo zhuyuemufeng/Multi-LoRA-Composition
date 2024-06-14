@@ -118,7 +118,6 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         lora_composite=True if method == "composite" else False
     ).images[0]
     end_time = time.time()
-    pipeline.unload_lora_weights()
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg")
     return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg", end_time - start_time
 
@@ -151,7 +150,6 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
     ).images[0]
     end_time = time.time()
     file_name = "lora" if lora_name != '' else "no_lora"
-    pipeline.unload_lora_weights()
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{bath_fix}.jpg")
     return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{bath_fix}.jpg", end_time - start_time
 
