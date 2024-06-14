@@ -177,8 +177,8 @@ if __name__ == "__main__":
 
 
     path = "/kaggle/input/lora-model/lora/reality"
-    name = parser.lora
-    method = parser.method   # merge switch composite
+    name = args.lora
+    method = args.method   # merge switch composite
     print(f"lora_name: {name}, method: {method}")
     lcm_file, lcm_time = speed_lora(path, method, "LCM", name)
 
