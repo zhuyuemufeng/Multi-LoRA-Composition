@@ -22,7 +22,7 @@ def scheduler(speed_type: str, pipeline):
     else:
         return TCDScheduler.from_config(pipeline.scheduler.config)
 
-def speed_type(speed_type: str, pipeline):
+def choose_type(speed_type: str, pipeline):
     if speed_type == "LCM":
         pipeline.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
     elif speed_type == "Hyper-SD":
@@ -78,14 +78,17 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
     pipeline.vae = vae
     pipeline.scheduler = scheduler(speed_type, pipeline)
     if speed_type == "LCM":
+        print("select the speed is >>>>>>>>>> LCM")
         pipeline.scheduler = LCMScheduler.from_config(pipeline.scheduler.config)
         pipeline.load_lora_weights("latent-consistency/lcm-lora-sdv1-5", adapter_name="speed_lora")
     elif speed_type == "Hyper-SD":
+        print("select the speed is >>>>>>>>>> Hyper")
         pipeline.scheduler = DDIMScheduler.from_config(pipeline.scheduler.config, timestep_spacing="trailing")
         repo_name = "ByteDance/Hyper-SD"
         ckpt_name = "Hyper-SD15-4steps-lora.safetensors"
         pipeline.load_lora_weights(hf_hub_download(repo_name, ckpt_name), adapter_name="speed_lora")
     else:
+        print("select the speed is >>>>>>>>>> TCD")
         pipeline.scheduler = TCDScheduler.from_config(pipeline.scheduler.config)
         pipeline.load_lora_weights("h1t/TCD-SD15-LoRA", adapter_name="speed_lora")
 
