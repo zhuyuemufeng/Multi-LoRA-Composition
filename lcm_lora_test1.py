@@ -150,15 +150,26 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
     ).images[0]
     end_time = time.time()
     file_name = "lora" if lora_name != '' else "no_lora"
-    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{bath_fix}.jpg")
-    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{bath_fix}.jpg", end_time - start_time
+    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{speed_type}-{bath_fix}.jpg")
+    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{speed_type}-{bath_fix}.jpg", end_time - start_time
 
 
 if __name__ == "__main__":
-    path = "/kaggle/input/lora-model/lora/reality"
-    name = "clothing_1.safetensors"
-    method = "switch"   # merge switch composite
+    parser = argparse.ArgumentParser(
+        description='Example code for multi-LoRA composition'
+    )
 
+    parser.add_argument('--method', default='switch',
+                        choices=['merge', 'switch', 'composite'],
+                        help='methods for combining LoRAs', type=str)
+    parser.add_argument('--lora', default='clothing_1.safetensors',
+                        help='lora name', type=str)
+    args = parser.parse_args()
+
+    path = "/kaggle/input/lora-model/lora/reality"
+    name = args.lora
+    method = args.method  # merge switch composite
+    print(f"lora_name: {name}, method: {method}")
     lcm_file, lcm_time = speed_lora(path, method, "LCM", name)
 
     hyper_file, hyper_time = speed_lora(path, method, "Hyper-SD", name)
@@ -180,5 +191,6 @@ if __name__ == "__main__":
                  f'execution time: {lcm_time}', f'execution time: {hyper_time}',
                  f'execution time: {tcd_time}']
     name_1 = name.replace(".safetensors", "")
-    merge_images_with_text(images, titles, subtitles, f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{name_1}.jpg")
+    merge_images_with_text(images, titles, subtitles,
+                           f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{name_1}.jpg")
     print(f"{method}-{name_1} finished")
