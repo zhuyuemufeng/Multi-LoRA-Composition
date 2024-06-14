@@ -118,7 +118,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         negative_prompt=negative_prompt,
         # height=1024,
         # width=768,
-        num_inference_steps=8,
+        num_inference_steps=4,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
@@ -173,9 +173,9 @@ if __name__ == "__main__":
 
     tcd_file, tcd_time = speed_lora(path, method, "TCD", name)
 
-    base_file, base_time = base_lora(path, name)
+    base_lora_file, base_lora_time = base_lora(path, name)
 
-    base_lora_file, base_lora_time = base_lora("", "")
+    base_file, base_time = base_lora("", "")
 
     # 图片路径列表
     images = [base_file, base_lora_file, lcm_file, hyper_file, tcd_file]
