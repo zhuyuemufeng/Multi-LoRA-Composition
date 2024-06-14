@@ -157,7 +157,7 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
 
 if __name__ == "__main__":
     path = "/kaggle/input/lora-model/lora/reality"
-    name = "style_2.safetensors"
+    name = "background_2.safetensors"
     method = "switch"   # merge switch composite
 
     lcm_file, lcm_time = speed_lora(path, method, "LCM", name)
