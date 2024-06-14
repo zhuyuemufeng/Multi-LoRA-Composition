@@ -130,12 +130,13 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
         use_safetensors=True,
         safety_checker=None,
         requires_safety_checker=False
-    ).to("cuda")
+    )
     if lora_name != '':
         pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name="lora_style")
         cur_loras = ["lora_style"]
         pipeline.set_adapters(cur_loras)
         print("base creat Load LoRA")
+    pipeline.to("cuda")
     start_time = time.time()
     image = pipeline(
         prompt=prompt,
@@ -157,7 +158,7 @@ def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
 
 if __name__ == "__main__":
     path = "/kaggle/input/lora-model/lora/reality"
-    name = "background_2.safetensors"
+    name = "character_2.safetensors"
     method = "switch"   # merge switch composite
 
     lcm_file, lcm_time = speed_lora(path, method, "LCM", name)
