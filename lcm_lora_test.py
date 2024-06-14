@@ -16,20 +16,26 @@ def get_example_prompt():
 
 def scheduler(speed_type: str, pipeline):
     if speed_type == "LCM":
+        print("scheduler is >>>>>>>>>> LCM")
         return LCMScheduler.from_config(pipeline.scheduler.config)
     elif speed_type == "Hyper-SD":
+        print("scheduler is >>>>>>>>>> Hyper")
         return DDIMScheduler.from_config(pipeline.scheduler.config, timestep_spacing="trailing")
     else:
+        print("scheduler is >>>>>>>>>> TCD")
         return TCDScheduler.from_config(pipeline.scheduler.config)
 
 def speed_choose(speed_type: str, pipeline):
     if speed_type == "LCM":
+        print("speed_choose is >>>>>>>>>> LCM")
         pipeline.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
     elif speed_type == "Hyper-SD":
+        print("speed_choose is >>>>>>>>>> Hyper")
         repo_name = "ByteDance/Hyper-SD"
         ckpt_name = "Hyper-SD15-4steps-lora.safetensors"
         pipeline.load_lora_weights(hf_hub_download(repo_name, ckpt_name))
     else:
+        print("speed_choose is >>>>>>>>>> TCD")
         pipeline.load_lora_weights("h1t/TCD-SD15-LoRA")
 
 
@@ -130,8 +136,8 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
         lora_composite=True if method == "composite" else False
     ).images[0]
     end_time = time.time()
-    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg")
-    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{speed_type}-{bath_fix}.jpg", end_time - start_time
+    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{speed_type}-{bath_fix}.jpg")
+    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{method}-{speed_type}-{bath_fix}.jpg", end_time - start_time
 
 def base_lora(lora_path: str, lora_name: str, bath_fix: str = "1"):
     prompt, negative_prompt = get_example_prompt()
