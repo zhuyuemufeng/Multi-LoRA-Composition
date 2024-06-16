@@ -177,7 +177,7 @@ if __name__ == "__main__":
 
     hyper_file, hyper_time = speed_lora(path, method, "Hyper-SD", name)
 
-    #tcd_file, tcd_time = speed_lora(path, method, "TCD", name)
+    tcd_file, tcd_time = speed_lora(path, method, "TCD", name)
 
     base_lora_file, base_lora_time = base_lora(path, name)
 
