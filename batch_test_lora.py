@@ -22,7 +22,7 @@ def main(lora_type):
             images = []
             titles = []
             descriptions = []
-            base_lora_image, base_lora_time = base_generate_image(f"/kaggle/input/lora-model/lora/{style}",
+            base_lora_image, base_lora_time = base_generate_image(f"/kaggle/input/lora-model/lora/{style}.safetensors",
                                                                   lora_name, prompt, negative_prompt)
             base_image, base_time = base_generate_image("", "", prompt, negative_prompt)
             images.append(base_image)
@@ -35,15 +35,15 @@ def main(lora_type):
                 for method in lora_method:
                     if lora_type == "fuse_save":
                         generate_image, generate_time = fuse_save_generate_image(
-                            f"/kaggle/input/lora-model/lora/{style}",
+                            f"/kaggle/input/lora-model/lora/{style}.safetensors",
                             method, speed, lora_name, prompt, negative_prompt)
                     elif lora_type == "fuse":
                         generate_image, generate_time = fuse_current_generate_image(
-                            f"/kaggle/input/lora-model/lora/{style}",
+                            f"/kaggle/input/lora-model/lora/{style}.safetensors",
                             method, speed, lora_name, prompt, negative_prompt)
                     else:
                         generate_image, generate_time = adapter_generate_image(
-                            f"/kaggle/input/lora-model/lora/{style}",
+                            f"/kaggle/input/lora-model/lora/{style}.safetensors",
                             method, speed, lora_name, prompt, negative_prompt)
                     images.append(generate_image)
                     titles.append(f"base + lora + {speed}")
