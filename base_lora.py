@@ -23,9 +23,8 @@ def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
         ).to("cuda")
         pipeline.vae = vae
     if lora_name != '':
-        pipeline.load_lora_weights(f"{lora_path}/{lora_name}", adapter_name="lora_style", lora_scale=0.8)
-        cur_loras = ["lora_style"]
-        pipeline.set_adapters(cur_loras)
+        pipeline.load_lora_weights(f"{lora_path}/{lora_name}", adapter_name="lora_style")
+        pipeline.set_adapters("lora_style")
     start_time = time.time()
     image = pipeline(
         prompt=prompt,
@@ -43,4 +42,5 @@ def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
     name_1 = lora_name.replace(".safetensors", "")
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{name_1}.jpg")
     pipeline.unload_lora_weights()
+    pipeline.disable_lora()
     return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{name_1}.jpg", int(end_time - start_time)

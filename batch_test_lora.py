@@ -8,8 +8,6 @@ from utils import load_lora_info, get_prompt
 
 
 def main(lora_type):
-    lora_type = "adapter"
-
     image_style = ["anime", "reality"]
     # lora_method = ["merge", "switch", "composite"]
     lora_method = ["switch"]

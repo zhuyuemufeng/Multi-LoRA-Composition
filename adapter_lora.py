@@ -51,7 +51,7 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
 
     # initialize LoRAs
     # This example shows the composition of a character LoRA and a clothing LoRA
-    pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name="lora_style", lora_scale=0.8)
+    pipeline.load_lora_weights(f"{lora_path}/{lora_name}", adapter_name="lora_style")
     cur_loras = ["speed_lora, lora_style"]
 
     # select the method for the composition
@@ -80,4 +80,6 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
     end_time = time.time()
     name_1 = lora_name.replace(".safetensors", "")
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{method}-{speed_type}-loadLora3.jpg")
+    pipeline.unload_lora_weights()
+    pipeline.disable_lora()
     return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{method}-{speed_type}-loadLora3.jpg", int(end_time - start_time)
