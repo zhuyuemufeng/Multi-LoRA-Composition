@@ -106,7 +106,7 @@ def speed_lora(lora_path: str, method: str, speed_type: str, lora_name: str, bat
 
     # initialize LoRAs
     # This example shows the composition of a character LoRA and a clothing LoRA
-    pipeline.load_lora_weights(lora_path, weight_name=lora_name, adapter_name="lora_style")
+    pipeline.load_lora_weights(lora_path, lora_scale=0.8, weight_name=lora_name, adapter_name="lora_style")
     cur_loras = ["lora_style"]
 
     # select the method for the composition
