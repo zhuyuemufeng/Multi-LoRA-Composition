@@ -60,50 +60,46 @@ def main(args):
     # prompt initialization
     init_prompt, negative_prompt = get_prompt(args.image_style)
 
-    print(combinations)
-    print(init_prompt)
-    print(negative_prompt)
-
     # generate images for each combination based on LoRAs
-    # for combo in tqdm(combinations):
-    #     cur_loras = [lora['id'] for lora in combo]
-    #
-    #     # set prompt
-    #     triggers = [trigger for lora in combo for trigger in lora['trigger']]
-    #     prompt = init_prompt + ', ' + ', '.join(triggers)
-    #
-    #     # set LoRAs
-    #     if args.method == "switch":
-    #         pipeline.set_adapters([cur_loras[0]])
-    #         switch_callback = make_callback(args.switch_step,
-    #                                     cur_loras)
-    #     elif args.method == "merge":
-    #         pipeline.set_adapters(cur_loras)
-    #         switch_callback = None
-    #     else:
-    #         pipeline.set_adapters(cur_loras)
-    #         switch_callback = None
-    #
-    #     # generate images
-    #     image = pipeline(
-    #         prompt=prompt,
-    #         negative_prompt=negative_prompt,
-    #         height=args.height,
-    #         width=args.width,
-    #         num_inference_steps=args.denoise_steps,
-    #         guidance_scale=args.cfg_scale,
-    #         generator=args.generator,
-    #         cross_attention_kwargs={"scale": args.lora_scale},
-    #         callback_on_step_end=switch_callback,
-    #         lora_composite=True if args.method == "composite" else False
-    #     ).images[0]
-    #
-    #     # save image
-    #     save_path = join(args.save_path, f'{args.compos_num}_elements')
-    #     if not exists(save_path):
-    #         os.makedirs(save_path)
-    #     file_name = args.method + '_' + '_'.join([lora['id'] for lora in combo]) + '.png'
-    #     image.save(join(save_path, file_name))
+    for combo in tqdm(combinations):
+        cur_loras = [lora['id'] for lora in combo]
+
+        # set prompt
+        triggers = [trigger for lora in combo for trigger in lora['trigger']]
+        prompt = init_prompt + ', ' + ', '.join(triggers)
+
+        # set LoRAs
+        if args.method == "switch":
+            pipeline.set_adapters([cur_loras[0]])
+            switch_callback = make_callback(args.switch_step,
+                                        cur_loras)
+        elif args.method == "merge":
+            pipeline.set_adapters(cur_loras)
+            switch_callback = None
+        else:
+            pipeline.set_adapters(cur_loras)
+            switch_callback = None
+
+        # generate images
+        image = pipeline(
+            prompt=prompt,
+            negative_prompt=negative_prompt,
+            height=args.height,
+            width=args.width,
+            num_inference_steps=args.denoise_steps,
+            guidance_scale=args.cfg_scale,
+            generator=args.generator,
+            cross_attention_kwargs={"scale": args.lora_scale},
+            callback_on_step_end=switch_callback,
+            lora_composite=True if args.method == "composite" else False
+        ).images[0]
+
+        # save image
+        save_path = join(args.save_path, f'{args.compos_num}_elements')
+        if not exists(save_path):
+            os.makedirs(save_path)
+        file_name = args.method + '_' + '_'.join([lora['id'] for lora in combo]) + '.png'
+        image.save(join(save_path, file_name))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
