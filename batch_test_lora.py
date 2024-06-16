@@ -9,12 +9,21 @@ from utils import load_lora_info, get_prompt
 
 def main(lora_type):
     image_style = ["anime", "reality"]
-    lora_method = ["merge", "switch", "composite"]
+    # lora_method = ["merge", "switch", "composite"]
+    lora_method = ["switch"]
     speed_type = ["LCM", "Hyper-SD", "TCD"]
     for style in image_style:
         lora_info = load_lora_info(style)
+        results = []
+        for category in lora_info.values():
+            for item in category:
+                result = {
+                    'id': item['id'],
+                    'trigger': item['trigger']
+                }
+                results.append(result)
         init_prompt, negative_prompt = get_prompt(image_style)
-        for lora_data in lora_info["character"]:
+        for lora_data in results:
             lora_name = lora_data["id"] + ".safetensors"
             lora_tagger = lora_data['trigger']
             prompt = init_prompt + ', ' + ', '.join(lora_tagger)
