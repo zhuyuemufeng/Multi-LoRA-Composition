@@ -15,7 +15,7 @@ def main(lora_type):
         lora_info = load_lora_info(style)
         init_prompt, negative_prompt = get_prompt(image_style)
         for lora_data in lora_info["character"]:
-            lora_name = lora_data[id]
+            lora_name = lora_data["id"]
             lora_tagger = lora_data['trigger']
             prompt = init_prompt + ', ' + ', '.join(lora_tagger)
             print(f"prompt: {prompt}")
