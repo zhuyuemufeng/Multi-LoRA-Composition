@@ -52,6 +52,16 @@ def main(lora_type):
                 merger_file = f"/kaggle/working/Multi-LoRA-Composition/test_file_image/all-{method}-{lora_type}-{name_1}.jpg"
                 merger_image(images, f"{lora_type}-{method}-{name_1}", titles, descriptions, merger_file)
 
+                titles.clear()
+                images.clear()
+                descriptions.clear()
+                images.append(base_image)
+                titles.append(f"base")
+                descriptions.append(f"excuteTime: {base_time} s")
+                images.append(base_lora_image)
+                titles.append(f"base + lora")
+                descriptions.append(f"excuteTime: {base_lora_time} s")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
