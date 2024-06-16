@@ -44,7 +44,7 @@ def main(lora_type):
                 for speed in speed_type:
                     if lora_type == "fuse_save":
                         generate_image, generate_time = fuse_save_generate_image(
-                            f"/kaggle/input/lora-model/lora/{style}",
+                                f"/kaggle/input/lora-model/lora/{style}",
                             method, speed, lora_name, prompt, negative_prompt)
                     elif lora_type == "fuse":
                         generate_image, generate_time = fuse_current_generate_image(

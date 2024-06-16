@@ -40,7 +40,7 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
     else:
         hug_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
         set_vae = True
-    base_type = "anime" if lora_path.find("anime") else "realistic"
+    base_type = "anime" if "anime" in lora_path else "realistic"
     model_name = f'models/{speed_type}-{base_type}'
     if not os.path.exists(model_name):
         # set base model
