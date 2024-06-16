@@ -5,7 +5,7 @@ import time
 
 def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
     set_vae = False
-    if lora_path.find("anime"):
+    if "anime" in lora_path:
         hug_name = 'gsdf/Counterfeit-V2.5'
     else:
         hug_name = 'SG161222/Realistic_Vision_V5.1_noVAE'

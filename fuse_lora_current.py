@@ -12,6 +12,7 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
     else:
         model_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
         set_vae = True
+    base_type = "anime" if "anime" in lora_path else "realistic"
     pipeline = DiffusionPipeline.from_pretrained(
         model_name,
         custom_pipeline="./pipelines/sd1.5_0.26.3",
@@ -67,7 +68,7 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
     ).images[0]
     end_time = time.time()
     name_1 = lora_name.replace(".safetensors", "")
-    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{method}-{speed_type}-loadLora2.jpg")
+    image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{base_type}-{method}-{speed_type}-loadLora2.jpg")
     pipeline.unload_lora_weights()
     pipeline.disable_lora()
-    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{method}-{speed_type}-loadLora2.jpg", int(end_time - start_time)
+    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{base_type}-{method}-{speed_type}-loadLora2.jpg", int(end_time - start_time)
