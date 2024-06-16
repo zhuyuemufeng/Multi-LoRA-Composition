@@ -6,7 +6,7 @@ import time
 from callbacks import make_callback
 
 
-def scheduler(speed_type: str, pipeline):
+def scheduler_adapter(speed_type: str, pipeline):
     if speed_type == "LCM":
         return LCMScheduler.from_config(pipeline.scheduler.config)
     elif speed_type == "Hyper-SD":
@@ -33,7 +33,7 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
             "stabilityai/sd-vae-ft-mse",
         ).to("cuda")
         pipeline.vae = vae
-    pipeline.scheduler = scheduler(speed_type, pipeline)
+    pipeline.scheduler = scheduler_adapter(speed_type, pipeline)
     if speed_type == "LCM":
         print("select the speed is >>>>>>>>>> LCM")
         pipeline.scheduler = LCMScheduler.from_config(pipeline.scheduler.config)

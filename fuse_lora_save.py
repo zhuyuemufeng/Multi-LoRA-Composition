@@ -72,7 +72,7 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
         requires_safety_checker=False
     ).to("cuda")
     # set scheduler
-    pipeline.scheduler = scheduler(speed_type, pipeline)
+    pipeline.scheduler = scheduler_save(speed_type, pipeline)
 
     # initialize LoRAs
     # This example shows the composition of a character LoRA and a clothing LoRA
