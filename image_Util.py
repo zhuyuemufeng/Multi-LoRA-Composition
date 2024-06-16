@@ -4,9 +4,9 @@ from PIL import Image, ImageDraw, ImageFont
 def merger_image(image_paths, main_title, titles, descriptions, out_path):
     images = [Image.open(path) for path in image_paths]
     # 使用系统字体并指定字体大小
-    title_font = ImageFont.truetype("arial.ttf", 24)  # 每个图片的标题字体大小为24
-    desc_font = ImageFont.truetype("arial.ttf", 18)  # 图片说明字体大小为18
-    main_title_font = ImageFont.truetype("arial.ttf", 36)  # 总标题字体大小为36
+    title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
+    desc_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+    main_title_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 36)
 
     # 计算每张图片的宽高
     widths, heights = zip(*(i.size for i in images))

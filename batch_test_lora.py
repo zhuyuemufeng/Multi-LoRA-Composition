@@ -31,8 +31,8 @@ def main(lora_type):
             images.append(base_lora_image)
             titles.append(f"base + lora")
             descriptions.append(f"excuteTime: {base_lora_time} s")
-            for speed in speed_type:
-                for method in lora_method:
+            for method in lora_method:
+                for speed in speed_type:
                     if lora_type == "fuse_save":
                         generate_image, generate_time = fuse_save_generate_image(
                             f"/kaggle/input/lora-model/lora/{style}",
@@ -48,9 +48,10 @@ def main(lora_type):
                     images.append(generate_image)
                     titles.append(f"base + lora + {speed}")
                     descriptions.append(f"excuteTime: {generate_time} s")
-            name_1 = lora_name.replace(".safetensors", "")
-            merger_file = f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{lora_type}-{name_1}.jpg"
-            merger_image(images, f"{lora_type}-{name_1}", titles, descriptions, merger_file)
+                name_1 = lora_name.replace(".safetensors", "")
+                merger_file = f"/kaggle/working/Multi-LoRA-Composition/test_file_image/all-{method}-{lora_type}-{name_1}.jpg"
+                merger_image(images, f"{lora_type}-{method}-{name_1}", titles, descriptions, merger_file)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
