@@ -16,7 +16,7 @@ def scheduler_adapter(speed_type: str, pipeline):
 
 def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str, prompt, negative_prompt):
     set_vae = False
-    if lora_path.find("anime"):
+    if "anime" in lora_path:
         model_name = 'gsdf/Counterfeit-V2.5'
     else:
         model_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
