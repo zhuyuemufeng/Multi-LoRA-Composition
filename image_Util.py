@@ -1,4 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
+import os
+import zipfile
 
 
 def merger_image(image_paths, main_title, titles, descriptions, out_path):
@@ -45,3 +47,14 @@ def merger_image(image_paths, main_title, titles, descriptions, out_path):
 
     # 保存新图像
     new_image.save(out_path)
+
+
+def zipDir(dirpath, outFullName):
+    zip = zipfile.ZipFile(outFullName, "w", zipfile.ZIP_DEFLATED)
+    for path, dirnames, filenames in os.walk(dirpath):
+        # 去掉目标跟路径，只对目标文件夹下边的文件及文件夹进行压缩
+        fpath = path.replace(dirpath, '')
+
+        for filename in filenames:
+            zip.write(os.path.join(path, filename), os.path.join(fpath, filename))
+    zip.close()

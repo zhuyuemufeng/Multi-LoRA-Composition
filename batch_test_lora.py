@@ -1,5 +1,5 @@
 import argparse
-from image_Util import merger_image
+from image_Util import merger_image, zipDir
 from adapter_lora import generate_image as adapter_generate_image
 from fuse_lora_current import generate_image as fuse_current_generate_image
 from fuse_lora_save import generate_image as fuse_save_generate_image
@@ -8,6 +8,8 @@ from utils import load_lora_info, get_prompt
 
 
 def main(lora_type):
+    lora_type = "adapter"
+
     image_style = ["anime", "reality"]
     # lora_method = ["merge", "switch", "composite"]
     lora_method = ["switch"]
@@ -58,8 +60,8 @@ def main(lora_type):
                     titles.append(f"base + lora + {speed}")
                     descriptions.append(f"excuteTime: {generate_time} s")
                 name_1 = lora_name.replace(".safetensors", "")
-                merger_file = f"/kaggle/working/Multi-LoRA-Composition/all_file_image/all-{method}-{lora_type}-{name_1}.jpg"
-                merger_image(images, f"{lora_type}-{method}-{name_1}", titles, descriptions, merger_file)
+                merger_file = f"/kaggle/working/Multi-LoRA-Composition/all_file_image/all-{image_style}-{method}-{lora_type}-{name_1}.jpg"
+                merger_image(images, "", titles, descriptions, merger_file)
 
                 titles.clear()
                 images.clear()
@@ -70,6 +72,7 @@ def main(lora_type):
                 images.append(base_lora_image)
                 titles.append(f"base + lora")
                 descriptions.append(f"excuteTime: {base_lora_time} s")
+        zipDir("/kaggle/working/Multi-LoRA-Composition/all_file_image", "/kaggle/working/Multi-LoRA-Composition/all.zip")
 
 
 if __name__ == "__main__":
