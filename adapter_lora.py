@@ -4,6 +4,16 @@ from diffusers import LCMScheduler
 from huggingface_hub import hf_hub_download
 import time
 from callbacks import make_callback
+
+
+def scheduler(speed_type: str, pipeline):
+    if speed_type == "LCM":
+        return LCMScheduler.from_config(pipeline.scheduler.config)
+    elif speed_type == "Hyper-SD":
+        return DDIMScheduler.from_config(pipeline.scheduler.config, timestep_spacing="trailing")
+    else:
+        return TCDScheduler.from_config(pipeline.scheduler.config)
+
 def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str, prompt, negative_prompt):
     set_vae = False
     if lora_path.find("anime"):

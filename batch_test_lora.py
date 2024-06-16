@@ -60,7 +60,7 @@ if __name__ == "__main__":
                         choices=['fuse_save', 'fuse', 'adapter'],
                         help='methods for combining LoRAs', type=str)
     args = parser.parse_args()
-    main(args)
+    main(args.lora_type)
 
 
 
