@@ -13,7 +13,7 @@ def main(lora_type):
     speed_type = ["LCM", "LCM", "TCD"]
     for style in image_style:
         lora_info = load_lora_info(style)
-        init_prompt, negative_prompt = get_prompt(args.image_style)
+        init_prompt, negative_prompt = get_prompt(image_style)
         for lora_data in lora_info["character"]:
             lora_name = lora_data[id]
             lora_tagger = lora_data['trigger']
