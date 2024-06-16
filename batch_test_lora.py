@@ -10,7 +10,7 @@ from utils import load_lora_info, get_prompt
 def main(lora_type):
     image_style = ["anime", "reality"]
     lora_method = ["merge", "switch", "composite"]
-    speed_type = ["LCM", "LCM", "TCD"]
+    speed_type = ["LCM", "Hyper-SD", "TCD"]
     for style in image_style:
         lora_info = load_lora_info(style)
         init_prompt, negative_prompt = get_prompt(image_style)
