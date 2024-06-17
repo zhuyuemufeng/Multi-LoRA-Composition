@@ -3,7 +3,7 @@ from diffusers import DiffusionPipeline, AutoencoderKL
 import time
 
 
-def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
+def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt, add_lora: bool = True):
     set_vae = False
     if "anime" in lora_path:
         hug_name = 'gsdf/Counterfeit-V2.5'
@@ -11,6 +11,7 @@ def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
         hug_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
         set_vae = True
     base_type = "anime" if "anime" in lora_path else "realistic"
+    print("Base model: hug_name>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + hug_name)
     pipeline = DiffusionPipeline.from_pretrained(
         hug_name,
         use_safetensors=True,
@@ -23,10 +24,10 @@ def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
             "stabilityai/sd-vae-ft-mse",
         ).to("cuda")
         pipeline.vae = vae
-    if lora_name != '':
+    if add_lora:
         pipeline.load_lora_weights(f"{lora_path}/{lora_name}", adapter_name="lora_style")
-        #pipeline.set_adapters("lora_style")
-        pipeline.fuse_lora()
+        pipeline.set_adapters("lora_style")
+        print("Base model: add_lora>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> True")
     start_time = time.time()
     image = pipeline(
         prompt=prompt,

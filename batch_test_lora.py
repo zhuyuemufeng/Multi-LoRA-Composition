@@ -35,8 +35,9 @@ def main(lora_type, lora_method_arg):
             titles = []
             descriptions = []
             base_lora_image, base_lora_time = base_generate_image(f"/kaggle/input/lora-model/lora/{style}",
-                                                                  lora_name, prompt, negative_prompt)
-            base_image, base_time = base_generate_image("", "", prompt, negative_prompt)
+                                                                  lora_name, prompt, negative_prompt, True)
+            base_image, base_time = base_generate_image(f"/kaggle/input/lora-model/lora/{style}",
+                                                                  lora_name, prompt, negative_prompt, False)
             images.append(base_image)
             titles.append(f"base")
             descriptions.append(f"excuteTime: {base_time} s")
