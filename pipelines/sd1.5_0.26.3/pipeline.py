@@ -1038,18 +1038,19 @@ class StableDiffusionPipeline(
                     noise_preds = []
                     # get noise_pred conditioned on each lora
                     self.enable_lora()
-                    for adapter in adapters:
-                        self.set_adapters(adapter)
-                        noise_pred = self.unet(
-                            latent_model_input,
-                            t,
-                            encoder_hidden_states=prompt_embeds,
-                            timestep_cond=timestep_cond,
-                            cross_attention_kwargs=self.cross_attention_kwargs,
-                            added_cond_kwargs=added_cond_kwargs,
-                            return_dict=False,
-                        )[0]
-                        noise_preds.append(noise_pred)
+                    lora_weights = [0.8, 1.0]
+                    self.set_adapters(adapters, lora_weights)
+                    noise_pred = self.unet(
+                        latent_model_input,
+                        t,
+                        encoder_hidden_states=prompt_embeds,
+                        timestep_cond=timestep_cond,
+                        cross_attention_kwargs=self.cross_attention_kwargs,
+                        added_cond_kwargs=added_cond_kwargs,
+                        return_dict=False,
+                    )[0]
+                    noise_preds.append(noise_pred)
+
                 else:
                     noise_pred = self.unet(
                         latent_model_input,
