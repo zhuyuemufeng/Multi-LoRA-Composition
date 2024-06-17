@@ -110,4 +110,4 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{base_type}-{method}-{speed_type}-loadLora1.jpg")
     pipeline.unload_lora_weights()
     pipeline.disable_lora()
-    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{base_type}-{method}-{speed_type}-loadLora1.jpg", int(end_time - start_time)
+    return f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{name_1}-{base_type}-{method}-{speed_type}-loadLora1.jpg", "{:.2f}".format(end_time - start_time)
