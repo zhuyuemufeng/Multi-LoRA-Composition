@@ -46,6 +46,7 @@ def main(lora_type, lora_method_arg):
             descriptions.append(f"excuteTime: {base_lora_time} s")
             for method in lora_method:
                 print("method>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + method)
+                print("lora_type>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + lora_type)
                 for speed in speed_type:
                     print("speed>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + speed)
                     if lora_type == "fuse_save":
