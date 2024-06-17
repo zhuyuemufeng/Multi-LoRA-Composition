@@ -89,7 +89,7 @@ if __name__ == "__main__":
     parser.add_argument('--lora_type', default='fuse_save',
                         choices=['fuse_save', 'fuse', 'adapter'],
                         help='methods for combining LoRAs', type=str)
-    parser.add_argument('--lora_method', default='fuse_save',
+    parser.add_argument('--lora_method', default='switch',
                         choices=["merge", "switch", "composite"],
                         help='methods for combining LoRAs', type=str)
     args = parser.parse_args()
