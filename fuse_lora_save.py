@@ -41,6 +41,8 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
         hug_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
         set_vae = True
     base_type = "anime" if "anime" in lora_path else "realistic"
+    print("base_type>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + base_type)
+    print("hug_name>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + hug_name)
     model_name = f'/kaggle/temp/models/{speed_type}-{base_type}'
     if not os.path.exists(model_name):
         os.makedirs(f'/kaggle/working/Multi-LoRA-Composition/models/{speed_type}-{base_type}', exist_ok=True)

@@ -1,6 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
 import zipfile
+from pathlib import Path
 
 
 def merger_image(image_paths, main_title, titles, descriptions, out_path):
@@ -58,3 +59,37 @@ def zipDir(dirpath, outFullName):
         for filename in filenames:
             zip.write(os.path.join(path, filename), os.path.join(fpath, filename))
     zip.close()
+
+def merge_images_vertically(image_dir, output_path):
+    image_paths = get_all_files_in_folder(image_dir)
+    images = [Image.open(img) for img in image_paths]
+
+    # 获取所有图片的宽度和高度
+    widths, heights = zip(*(img.size for img in images))
+
+    # 计算合并后图片的宽度和高度
+    max_width = max(widths)
+    total_height = sum(heights)
+
+    # 创建一张新的空白图片
+    merged_image = Image.new('RGB', (max_width, total_height))
+
+    # 将每张图片粘贴到新图片中
+    y_offset = 0
+    for img in images:
+        merged_image.paste(img, (0, y_offset))
+        y_offset += img.size[1]  # 增加偏移量，以便下一张图片粘贴到正确的位置
+
+    # 保存合并后的图片
+    merged_image.save(output_path)
+
+    print(f"图片已成功竖向合并并保存到 {output_path}")
+
+
+def get_all_files_in_folder(folder_path):
+    all_files = []
+    # 使用 Path 对象遍历目录及其子目录中的所有文件
+    for file_path in Path(folder_path).rglob('*'):
+        if file_path.is_file():
+            all_files.append(str(file_path))
+    return all_files
