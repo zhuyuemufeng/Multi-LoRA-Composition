@@ -54,10 +54,11 @@ def generate_image(lora_path: str, method: str, speed_type: str, lora_name: str,
     # This example shows the composition of a character LoRA and a clothing LoRA
     pipeline.load_lora_weights(f"{lora_path}/{lora_name}", adapter_name="lora_style")
     cur_loras = ["lora_style", "speed_lora"]
+    lora_weights = [0.8, 1.0]
 
     # select the method for the composition
     if method == "merge":
-        pipeline.set_adapters(cur_loras)
+        pipeline.set_adapters(cur_loras, lora_weights)
         switch_callback = None
     elif method == "switch":
         pipeline.set_adapters([cur_loras[0]])
