@@ -41,7 +41,7 @@ def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt, add_
         lora_composite=False
     ).images[0]
     end_time = time.time()
-    file_name = "lora" if lora_name != '' else "no_lora"
+    file_name = "lora" if add_lora else "no_lora"
     name_1 = lora_name.replace(".safetensors", "")
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/base-{file_name}-{base_type}-{name_1}.jpg")
     pipeline.unload_lora_weights()
