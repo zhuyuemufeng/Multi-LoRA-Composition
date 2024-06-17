@@ -25,7 +25,8 @@ def generate_image(lora_path: str, lora_name: str, prompt, negative_prompt):
         pipeline.vae = vae
     if lora_name != '':
         pipeline.load_lora_weights(f"{lora_path}/{lora_name}", adapter_name="lora_style")
-        pipeline.set_adapters("lora_style")
+        #pipeline.set_adapters("lora_style")
+        pipeline.fuse_lora()
     start_time = time.time()
     image = pipeline(
         prompt=prompt,
