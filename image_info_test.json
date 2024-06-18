@@ -1,82 +1,82 @@
 [
     {
         "lora_type": "anime",
-        "lora_list": "character_1,style_1",
-        "taggers": "kamado nezuko,black hair,pink eyes,forehead,lineart,hand-drawn style"
+        "lora_list": "character_3.safetensors,clothing_2.safetensors",
+        "taggers": "son goku,spiked hair,muscular male,wristband,zero suit,blue gloves,high heels"
     },
     {
         "lora_type": "anime",
-        "lora_list": "character_3,style_1",
-        "taggers": "son goku,spiked hair,muscular male,wristband,lineart,hand-drawn style"
-    },
-    {
-        "lora_type": "anime",
-        "lora_list": "character_1,style_2",
-        "taggers": "kamado nezuko,black hair,pink eyes,forehead,shuimobysim,traditional chinese ink painting"
-    },
-    {
-        "lora_type": "anime",
-        "lora_list": "character_3,style_2",
-        "taggers": "son goku,spiked hair,muscular male,wristband,shuimobysim,traditional chinese ink painting"
-    },
-    {
-        "lora_type": "anime",
-        "lora_list": "character_1,clothing_1",
-        "taggers": "kamado nezuko,black hair,pink eyes,forehead,gmuniform,blue thighhighs,long sleeves"
-    },
-    {
-        "lora_type": "anime",
-        "lora_list": "character_3,clothing_1",
-        "taggers": "son goku,spiked hair,muscular male,wristband,gmuniform,blue thighhighs,long sleeves"
-    },
-    {
-        "lora_type": "anime",
-        "lora_list": "character_1,clothing_2",
+        "lora_list": "character_1.safetensors,clothing_2.safetensors",
         "taggers": "kamado nezuko,black hair,pink eyes,forehead,zero suit,blue gloves,high heels"
     },
     {
         "lora_type": "anime",
-        "lora_list": "character_3,clothing_2",
-        "taggers": "son goku,spiked hair,muscular male,wristband,zero suit,blue gloves,high heels"
+        "lora_list": "character_3.safetensors,clothing_1.safetensors",
+        "taggers": "son goku,spiked hair,muscular male,wristband,gmuniform,blue thighhighs,long sleeves"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1.safetensors,clothing_1.safetensors",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,gmuniform,blue thighhighs,long sleeves"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_3.safetensors,background_1.safetensors",
+        "taggers": "son goku,spiked hair,muscular male,wristband,bamboolight,outdoors,bamboo"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1.safetensors,background_1.safetensors",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,bamboolight,outdoors,bamboo"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_3.safetensors,background_2.safetensors",
+        "taggers": "son goku,spiked hair,muscular male,wristband,auroral,starry sky,outdoors"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1.safetensors,background_2.safetensors",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,auroral,starry sky,outdoors"
     },
     {
         "lora_type": "reality",
-        "lora_list": "character_3,clothing_2",
-        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,school uniform,white shirt,red tie,blue pleated microskirt"
-    },
-    {
-        "lora_type": "reality",
-        "lora_list": "character_2,clothing_2",
-        "taggers": "scarlett,short red hair,blue eyes,school uniform,white shirt,red tie,blue pleated microskirt"
-    },
-    {
-        "lora_type": "reality",
-        "lora_list": "character_3,clothing_1",
-        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,mahalaiuniform,white shirt short sleeves,black pencil skirt"
-    },
-    {
-        "lora_type": "reality",
-        "lora_list": "character_2,clothing_1",
+        "lora_list": "character_2.safetensors,clothing_1.safetensors",
         "taggers": "scarlett,short red hair,blue eyes,mahalaiuniform,white shirt short sleeves,black pencil skirt"
     },
     {
         "lora_type": "reality",
-        "lora_list": "character_3,background_1",
-        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,lib_bg,library bookshelf"
+        "lora_list": "character_1.safetensors,clothing_1.safetensors",
+        "taggers": "iu1,long straight black hair,hazel eyes,diamond stud earrings,mahalaiuniform,white shirt short sleeves,black pencil skirt"
     },
     {
         "lora_type": "reality",
-        "lora_list": "character_2,background_1",
+        "lora_list": "character_2.safetensors,clothing_2.safetensors",
+        "taggers": "scarlett,short red hair,blue eyes,school uniform,white shirt,red tie,blue pleated microskirt"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_1.safetensors,clothing_2.safetensors",
+        "taggers": "iu1,long straight black hair,hazel eyes,diamond stud earrings,school uniform,white shirt,red tie,blue pleated microskirt"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_2.safetensors,background_2.safetensors",
+        "taggers": "scarlett,short red hair,blue eyes,slg,river,forest"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_1.safetensors,background_2.safetensors",
+        "taggers": "iu1,long straight black hair,hazel eyes,diamond stud earrings,slg,river,forest"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_2.safetensors,background_1.safetensors",
         "taggers": "scarlett,short red hair,blue eyes,lib_bg,library bookshelf"
     },
     {
         "lora_type": "reality",
-        "lora_list": "character_3,background_2",
-        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,slg,river,forest"
-    },
-    {
-        "lora_type": "reality",
-        "lora_list": "character_2,background_2",
-        "taggers": "scarlett,short red hair,blue eyes,slg,river,forest"
+        "lora_list": "character_1.safetensors,background_1.safetensors",
+        "taggers": "iu1,long straight black hair,hazel eyes,diamond stud earrings,lib_bg,library bookshelf"
     }
 ]
