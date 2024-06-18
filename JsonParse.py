@@ -5,7 +5,7 @@ class JsonParse:
     def __init__(self, lora_type, lora_list, tagger):
         self.lora_type = lora_type
         self.lora_list = lora_list
-        self.taggers = lora_tagger(tagger)
+        self.taggers = tagger
 
     def get_lora_type(self):
         return self.lora_type
