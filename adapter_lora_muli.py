@@ -54,8 +54,9 @@ def generate_image(lora_type: str, lora_list: list, method: str, speed_type: str
     cur_loras = []
     lora_weights = []
     for lora in lora_list:
-        pipeline.load_lora_weights(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}", adapter_name=lora)
-        cur_loras.append(lora)
+        lora_name_1 = lora.replace(".safetensors", "")
+        pipeline.load_lora_weights(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}", adapter_name=lora_name_1)
+        cur_loras.append(lora_name_1)
         lora_weights.append(0.8)
     cur_loras.append("speed_lora")
     lora_weights.append(1)
