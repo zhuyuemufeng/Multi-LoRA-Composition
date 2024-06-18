@@ -12,7 +12,7 @@ from utils import load_lora_info, get_prompt
 def main(lora_type, lora_method_arg):
     lora_method = [lora_method_arg]
     speed_type = ["LCM", "Hyper-SD", "TCD"]
-    with open("image_info.json") as f:
+    with open("image_info_test.json") as f:
         lora_info = json.loads(f.read())
     results = []
     for category in lora_info:
