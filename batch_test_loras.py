@@ -16,7 +16,7 @@ def main(lora_type, lora_method_arg):
         lora_info = json.loads(f.read())
     results = []
     for category in lora_info:
-        results.append(JsonParse(category['path'], category['prompt']))
+        results.append(JsonParse(category['lora_type'], category['lora_list'], category['taggers']))
     for json_data in results:
         print("lora_name>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + ",".join(json_data.get_lora_list()))
         print("lora_type>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + json_data.get_lora_type())

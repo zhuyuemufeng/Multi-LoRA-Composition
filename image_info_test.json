@@ -1,153 +1,82 @@
 [
-  {
-    "index": 1,
-    "path": "output_anime/2_elements/merge_character_1_style_2.png",
-    "method": "merge",
-    "number of elements": 2,
-    "prompt": [
-      "1. character (Kamado Nezuko): kamado nezuko, black hair, pink eyes, forehead",
-      "2. style (Shuimobysim (Chinese Ink Wash Style)): shuimobysim, traditional chinese ink painting"
-    ]
-  },
-  {
-    "index": 10,
-    "path": "output_anime/3_elements/merge_character_3_clothing_2_background_2.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (Son Goku): son goku, spiked hair, muscular male, wristband",
-      "2. clothing (Zero Suit (Metroid)): zero suit, blue gloves, high heels",
-      "3. background (Auroral Background): auroral, starry sky, outdoors"
-    ]
-  },
-  {
-    "index": 19,
-    "path": "output_anime/3_elements/merge_character_2_clothing_2_background_2.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (Texas the Omertosa in Arknights): omertosa, 1girl, wolf ears, long hair",
-      "2. clothing (Zero Suit (Metroid)): zero suit, blue gloves, high heels",
-      "3. background (Auroral Background): auroral, starry sky, outdoors"
-    ]
-  },
-  {
-    "index": 31,
-    "path": "output_anime/3_elements/merge_character_3_style_2_object_1.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (Son Goku): son goku, spiked hair, muscular male, wristband",
-      "2. style (Shuimobysim (Chinese Ink Wash Style)): shuimobysim, traditional chinese ink painting",
-      "3. object (Huge Two-Handed Burger): two-handed burger, holding a huge burger with both hands"
-    ]
-  },
-  {
-    "index": 61,
-    "path": "output_reality/3_elements/merge_character_3_clothing_2_style_1.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (The Rock (Dwayne Johnson)): th3r0ck with no hair, muscular male, serious look on his face",
-      "2. clothing (School Dress): school uniform, white shirt, red tie, blue pleated microskirt",
-      "3. style (Japanese Film Color Style): film overlay, film grain"
-    ]
-  },
-  {
-    "index": 64,
-    "path": "output_reality/2_elements/merge_character_1_background_2.png",
-    "method": "merge",
-    "number of elements": 2,
-    "prompt": [
-      "1. character (IU (Lee Ji Eun, Korean singer)): iu1, long straight black hair, hazel eyes, diamond stud earrings",
-      "2. background (Forest Background): slg, river, forest"
-    ]
-  },
-  {
-    "index": 82,
-    "path": "output_reality/3_elements/merge_character_1_clothing_2_style_2.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (IU (Lee Ji Eun, Korean singer)): iu1, long straight black hair, hazel eyes, diamond stud earrings",
-      "2. clothing (School Dress): school uniform, white shirt, red tie, blue pleated microskirt",
-      "3. style (Bright Style): bright lighting"
-    ]
-  },
-  {
-    "index": 85,
-    "path": "output_reality/3_elements/merge_character_2_clothing_1_background_1.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (Scarlett Johansson): scarlett, short red hair, blue eyes",
-      "2. clothing (Thai University Uniform): mahalaiuniform, white shirt short sleeves, black pencil skirt",
-      "3. background (Library Bookshelf Background): lib_bg, library bookshelf"
-    ]
-  },
-  {
-    "index": 91,
-    "path": "output_reality/3_elements/merge_character_1_clothing_2_background_1.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (IU (Lee Ji Eun, Korean singer)): iu1, long straight black hair, hazel eyes, diamond stud earrings",
-      "2. clothing (School Dress): school uniform, white shirt, red tie, blue pleated microskirt",
-      "3. background (Library Bookshelf Background): lib_bg, library bookshelf"
-    ]
-  },
-  {
-    "index": 94,
-    "path": "output_reality/3_elements/merge_character_2_clothing_2_object_2.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (Scarlett Johansson): scarlett, short red hair, blue eyes",
-      "2. clothing (School Dress): school uniform, white shirt, red tie, blue pleated microskirt",
-      "3. object (Bubble Gum): blow bubble gum"
-    ]
-  },
-  {
-    "index": 97,
-    "path": "output_reality/3_elements/merge_character_1_background_1_object_2.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (IU (Lee Ji Eun, Korean singer)): iu1, long straight black hair, hazel eyes, diamond stud earrings",
-      "2. background (Library Bookshelf Background): lib_bg, library bookshelf",
-      "3. object (Bubble Gum): blow bubble gum"
-    ]
-  },
-  {
-    "index": 103,
-    "path": "output_reality/3_elements/merge_character_1_style_1_background_1.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (IU (Lee Ji Eun, Korean singer)): iu1, long straight black hair, hazel eyes, diamond stud earrings",
-      "2. style (Japanese Film Color Style): film overlay, film grain",
-      "3. background (Library Bookshelf Background): lib_bg, library bookshelf"
-    ]
-  },
-  {
-    "index": 115,
-    "path": "output_reality/3_elements/merge_character_1_style_2_background_2.png",
-    "method": "merge",
-    "number of elements": 3,
-    "prompt": [
-      "1. character (IU (Lee Ji Eun, Korean singer)): iu1, long straight black hair, hazel eyes, diamond stud earrings",
-      "2. style (Bright Style): bright lighting",
-      "3. background (Forest Background): slg, river, forest"
-    ]
-  },
-  {
-    "index": 118,
-    "path": "output_reality/2_elements/merge_character_3_style_1.png",
-    "method": "merge",
-    "number of elements": 2,
-    "prompt": [
-      "1. character (The Rock (Dwayne Johnson)): th3r0ck with no hair, muscular male, serious look on his face",
-      "2. style (Japanese Film Color Style): film overlay, film grain"
-    ]
-  }
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1,style_1",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,lineart,hand-drawn style"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_3,style_1",
+        "taggers": "son goku,spiked hair,muscular male,wristband,lineart,hand-drawn style"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1,style_2",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,shuimobysim,traditional chinese ink painting"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_3,style_2",
+        "taggers": "son goku,spiked hair,muscular male,wristband,shuimobysim,traditional chinese ink painting"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1,clothing_1",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,gmuniform,blue thighhighs,long sleeves"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_3,clothing_1",
+        "taggers": "son goku,spiked hair,muscular male,wristband,gmuniform,blue thighhighs,long sleeves"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_1,clothing_2",
+        "taggers": "kamado nezuko,black hair,pink eyes,forehead,zero suit,blue gloves,high heels"
+    },
+    {
+        "lora_type": "anime",
+        "lora_list": "character_3,clothing_2",
+        "taggers": "son goku,spiked hair,muscular male,wristband,zero suit,blue gloves,high heels"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_3,clothing_2",
+        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,school uniform,white shirt,red tie,blue pleated microskirt"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_2,clothing_2",
+        "taggers": "scarlett,short red hair,blue eyes,school uniform,white shirt,red tie,blue pleated microskirt"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_3,clothing_1",
+        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,mahalaiuniform,white shirt short sleeves,black pencil skirt"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_2,clothing_1",
+        "taggers": "scarlett,short red hair,blue eyes,mahalaiuniform,white shirt short sleeves,black pencil skirt"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_3,background_1",
+        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,lib_bg,library bookshelf"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_2,background_1",
+        "taggers": "scarlett,short red hair,blue eyes,lib_bg,library bookshelf"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_3,background_2",
+        "taggers": "th3r0ck with no hair,muscular male,serious look on his face,slg,river,forest"
+    },
+    {
+        "lora_type": "reality",
+        "lora_list": "character_2,background_2",
+        "taggers": "scarlett,short red hair,blue eyes,slg,river,forest"
+    }
 ]
