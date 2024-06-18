@@ -16,7 +16,9 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
     pipeline = DiffusionPipeline.from_pretrained(
         hug_name,
         custom_pipeline="./pipelines/sd1.5_0.26.3",
-        use_safetensors=True
+        use_safetensors=True,
+        safety_checker=None,
+        requires_safety_checker=False
     ).to("cuda")
     if set_vae:
         # set vae
