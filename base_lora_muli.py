@@ -31,8 +31,9 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
         cur_loras = []
         for lora in lora_list:
             print(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}")
-            pipeline.load_lora_weights(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}", adapter_name=lora)
-            cur_loras.append(lora)
+            lora_name_1 = lora.replace(".safetensors", "")
+            pipeline.load_lora_weights(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}", adapter_name=lora_name_1)
+            cur_loras.append(lora_name_1)
         print("Base model: add_lora>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> True")
         # select the method for the composition
         if method == "merge":
