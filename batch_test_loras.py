@@ -18,7 +18,7 @@ def main(lora_type, lora_method_arg):
     for category in lora_info:
         results.append(JsonParse(category['path'], category['prompt']))
     for json_data in results:
-        print("lora_name>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + json_data.get_lora_list())
+        print("lora_name>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + ",".join(json_data.get_lora_list()))
         print("lora_type>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + json_data.get_lora_type())
         init_prompt, negative_prompt = get_prompt(json_data.get_lora_type())
         prompt = init_prompt + ', ' + json_data.get_taggers()
