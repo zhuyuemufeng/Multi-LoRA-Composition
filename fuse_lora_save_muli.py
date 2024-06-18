@@ -102,7 +102,7 @@ def generate_image(lora_type: str, lora_list: list, method: str, speed_type: str
     image = pipeline(
         prompt=prompt,
         negative_prompt=negative_prompt,
-        num_inference_steps=8,
+        num_inference_steps=4,
         guidance_scale=1.8,
         generator=torch.manual_seed(42),
         cross_attention_kwargs={"scale": 0.8},
