@@ -46,6 +46,8 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
             pipeline.set_adapters(cur_loras)
             switch_callback = None
     start_time = time.time()
+    print(prompt)
+    print(negative_prompt)
     image = pipeline(
         prompt=prompt,
         negative_prompt=negative_prompt,
