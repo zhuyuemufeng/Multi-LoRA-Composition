@@ -13,13 +13,21 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
         hug_name = 'SG161222/Realistic_Vision_V5.1_noVAE'
         set_vae = True
     print("Base model: hug_name>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + hug_name)
-    pipeline = DiffusionPipeline.from_pretrained(
-        hug_name,
-        custom_pipeline="./pipelines/sd1.5_0.26.3",
-        use_safetensors=True,
-        safety_checker=None,
-        requires_safety_checker=False
-    ).to("cuda")
+    if add_lora:
+        pipeline = DiffusionPipeline.from_pretrained(
+            hug_name,
+            custom_pipeline="./pipelines/sd1.5_0.26.3",
+            use_safetensors=True,
+            safety_checker=None,
+            requires_safety_checker=False
+        ).to("cuda")
+    else:
+        pipeline = DiffusionPipeline.from_pretrained(
+            hug_name,
+            use_safetensors=True,
+            safety_checker=None,
+            requires_safety_checker=False
+        ).to("cuda")
     if set_vae:
         # set vae
         vae = AutoencoderKL.from_pretrained(
@@ -52,18 +60,31 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
     start_time = time.time()
     print("prompt>>>>>>" + prompt)
     print("negative_prompt>>>>>>" + negative_prompt)
-    image = pipeline(
-        prompt=prompt,
-        negative_prompt=negative_prompt,
-        # height=1024,
-        # width=768,
-        num_inference_steps=20,
-        guidance_scale=1.8,
-        generator=torch.manual_seed(42),
-        cross_attention_kwargs={"scale": 0.8},
-        callback_on_step_end=switch_callback,
-        lora_composite=True if method == "composite" else False
-    ).images[0]
+    if add_lora:
+        image = pipeline(
+            prompt=prompt,
+            negative_prompt=negative_prompt,
+            # height=1024,
+            # width=768,
+            num_inference_steps=20,
+            guidance_scale=1.8,
+            generator=torch.manual_seed(42),
+            cross_attention_kwargs={"scale": 0.8},
+            callback_on_step_end=switch_callback,
+            lora_composite=True if method == "composite" else False
+        ).images[0]
+    else:
+        image = pipeline(
+            prompt=prompt,
+            negative_prompt=negative_prompt,
+            # height=1024,
+            # width=768,
+            num_inference_steps=20,
+            guidance_scale=1.8,
+            generator=torch.manual_seed(42),
+            cross_attention_kwargs={"scale": 0.8},
+            lora_composite=False
+        ).images[0]
     end_time = time.time()
     name_lora = [lo.replace(".safetensors", "") for lo in lora_list]
     name_1 = ",".join(name_lora)
