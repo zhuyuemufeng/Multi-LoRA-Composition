@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
+import re
 import zipfile
 from pathlib import Path
 
@@ -93,3 +94,41 @@ def get_all_files_in_folder(folder_path):
         if file_path.is_file():
             all_files.append(str(file_path))
     return all_files
+
+
+pattern = r'output_(\w+)/(\d+)_elements/(?:composite|switch|merge)(?:_(character_\d+))?(?:_(clothing_\d+))?(?:_(style_\d+))?(?:_(background_\d+))?(?:_(object_\d+))?.png'
+
+def match_path(json_path):
+    # 使用 re.search() 进行匹配
+    match = re.search(pattern, json_path)
+    loras = []
+    if match:
+        # 提取匹配到的信息
+        reality = match.group(1)
+        character = match.group(3)
+        if character is not None:
+            loras.append(character + ".safetensors")
+        clothing = match.group(4)
+        if clothing is not None:
+            loras.append(clothing + ".safetensors")
+        style = match.group(5)
+        if style is not None:
+            loras.append(style + ".safetensors")
+        background = match.group(6)
+        if background is not None:
+            loras.append(background + ".safetensors")
+        object_info = match.group(7)
+        if object_info is not None:
+            loras.append(object_info + ".safetensors")
+        return loras, reality
+
+
+def lora_tagger(tagger_list):
+    extracted_parts = []
+    # 遍历每个字符串
+    for item in tagger_list:
+        # 使用split(':')切割每个字符串，然后获取列表的最后一个元素，即截取的部分
+        extracted_part = item.split(':')[-1].strip()
+        # 将截取的部分加入到extracted_parts列表中
+        extracted_parts.append(extracted_part)
+    return ', '.join(extracted_parts)
