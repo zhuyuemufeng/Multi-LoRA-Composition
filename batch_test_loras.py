@@ -52,7 +52,7 @@ def main(lora_type, lora_method_arg):
                 titles.append(f"base + lora + {speed}")
                 descriptions.append(f"excuteTime: {generate_time} s")
             name_lora = [lo.replace(".safetensors", "") for lo in json_data.get_lora_list()]
-            name_1 = ",".join(name_lora)
+            name_1 = "_".join(name_lora)
             merger_file = f"/kaggle/working/Multi-LoRA-Composition/all_file_image/{lora_method_arg}/all-{json_data.lora_type}-{name_1}.jpg"
             merger_image(images, "", titles, descriptions, merger_file)
     print("start merge all image>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
