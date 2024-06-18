@@ -1,5 +1,5 @@
 import torch
-from diffusers import DiffusionPipeline, AutoencoderKL
+from diffusers import DiffusionPipeline, AutoencoderKL, DPMSolverMultistepScheduler
 import time
 
 from callbacks import make_callback
@@ -28,6 +28,10 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
         pipeline.vae = vae
     switch_callback = None
     if add_lora:
+        # set scheduler
+        schedule_config = dict(pipeline.scheduler.config)
+        schedule_config["algorithm_type"] = "dpmsolver++"
+        pipeline.scheduler = DPMSolverMultistepScheduler.from_config(schedule_config)
         cur_loras = []
         for lora in lora_list:
             print(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}")
@@ -46,8 +50,8 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
             pipeline.set_adapters(cur_loras)
             switch_callback = None
     start_time = time.time()
-    print(prompt)
-    print(negative_prompt)
+    print("prompt>>>>>>" + prompt)
+    print("negative_prompt>>>>>>" + negative_prompt)
     image = pipeline(
         prompt=prompt,
         negative_prompt=negative_prompt,
