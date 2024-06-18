@@ -28,7 +28,7 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
     if add_lora:
         cur_loras = []
         for lora in lora_list:
-            pipeline.load_lora_weights(f"/kaggle/input/lora-model/lora/{lora_type}/{lora}", adapter_name=lora)
+            pipeline.load_lora_weights(f"/kaggle/input/lora-model/lora/{lora_type}", weight_name=lora, adapter_name=lora)
             cur_loras.append(lora)
         print("Base model: add_lora>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> True")
         # select the method for the composition
