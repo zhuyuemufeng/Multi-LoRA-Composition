@@ -87,7 +87,7 @@ def generate_image(lora_type: str, lora_list: list, method: str, prompt, negativ
         ).images[0]
     end_time = time.time()
     name_lora = [lo.replace(".safetensors", "") for lo in lora_list]
-    name_1 = ",".join(name_lora)
+    name_1 = "_".join(name_lora)
     if add_lora:
         name_2 = "lora"
     else:

@@ -111,7 +111,7 @@ def generate_image(lora_type: str, lora_list: list, method: str, speed_type: str
     ).images[0]
     end_time = time.time()
     name_lora = [lo.replace(".safetensors", "") for lo in lora_list]
-    name_1 = ",".join(name_lora)
+    name_1 = "_".join(name_lora)
     image.save(f"/kaggle/working/Multi-LoRA-Composition/test_file_image/{lora_type}-{method}-{name_1}-{method}-{speed_type}-loadLora1.jpg")
     pipeline.unload_lora_weights()
     pipeline.disable_lora()
